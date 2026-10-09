@@ -11,6 +11,7 @@ import { InboundPanel } from './components/InboundPanel';
 import { WarehousePanel } from './components/WarehousePanel';
 import { RetailerDemandPanel } from './components/RetailerDemandPanel';
 import { ToastContainer } from './components/Toast';
+import PredictiveMLEngine from './components/PredictiveMLEngine';
 
 export default function App() {
   const [inboundBatches, setInboundBatches] = useState(INITIAL_INBOUND_BATCHES);
@@ -191,6 +192,9 @@ export default function App() {
 
         {/* Right Content Area: Displays the Active Tab View */}
         <main className="flex-1 w-full min-w-0">
+          {/* Machine Learning Simulator Card (Rendered globally for easy testing) */}
+          <PredictiveMLEngine />
+
           {/* TAB 1: BUY - Manufacturer Inbound Feed */}
           {activeTab === 'BUY' && (
             <div className="animate-fade-in min-h-[640px]">
@@ -219,32 +223,6 @@ export default function App() {
           {/* TAB 3: SELL & PLAN - Retailer Demand Board */}
           {activeTab === 'SELL' && (
             <div className="animate-fade-in min-h-[640px]">
-              <RetailerDemandPanel
-                retailerOrders={retailerOrders}
-                warehouseBatches={warehouseBatches}
-                onFulfillOrder={handleFulfillOrder}
-              />
-            </div>
-          )}
-
-          {/* TAB 4: 3-PHASE PIPELINE VIEW (ALL COLUMNS) */}
-          {activeTab === 'ALL' && (
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 items-stretch min-h-[680px] animate-fade-in">
-              <InboundPanel
-                inboundBatches={inboundBatches}
-                onAcceptToWarehouse={handleAcceptToWarehouse}
-                onAddSampleBatch={handleAddSampleBatch}
-              />
-
-              <WarehousePanel
-                warehouseBatches={warehouseBatches}
-                selectedBatchId={selectedBatchId}
-                onSelectBatch={setSelectedBatchId}
-                onRunPrediction={handleRunPrediction}
-                isPredicting={isPredicting}
-                onRouteToRescue={handleRouteToRescue}
-              />
-
               <RetailerDemandPanel
                 retailerOrders={retailerOrders}
                 warehouseBatches={warehouseBatches}

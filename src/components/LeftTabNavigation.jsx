@@ -54,17 +54,6 @@ export function LeftTabNavigation({
       activeRing: 'border-emerald-500 bg-emerald-50/50',
       activeIndicator: 'bg-emerald-600',
     },
-    {
-      id: 'ALL',
-      number: '✦',
-      title: '3-Phase Pipeline',
-      subtitle: 'ALL COLUMNS VIEW',
-      icon: Columns,
-      count: 'Overview',
-      badgeColor: 'bg-slate-200 text-slate-700',
-      activeRing: 'border-indigo-500 bg-indigo-50/50',
-      activeIndicator: 'bg-indigo-600',
-    },
   ];
 
   return (
